@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pogoda.css" />
+    <link rel="stylesheet" href="./nullstyles.css" />
+    <title>Pogoda</title>
+  </head>
+  <body>
+    <div class="main-body">
+      <form class="form">
+        <div class="input-body">
+          <input
+            class="input"
+            type="text"
+            placeholder="Введите название города"
+          />
+          <button class="search-button">
+            <img src="./images/lupa.svg" alt="" />
+          </button>
+        </div>
+      </form>
+      <div class="second-body">
+        <div class="pogoda-body">
+          <div class="temp-body">
+            <label class="temp-label">14°</label>
+          </div>
+          <div class="weather-body">
+            <label class="weather-label">
+              <img class="weather-image" src="./images/cloud.svg" alt="" />
+            </label>
+          </div>
+          <div class="city-body">
+            <label class="city-label">Sterlitamak</label>
+            <button class="unlike-button"></button>
+          </div>
+        </div>
+        <div class="add-loc-body">
+          <div class="add-location">Added locations:</div>
+          <div class="added-location"></div>
+        </div>
+      </div>
+    </div>
+    <script src="pogoda.js"></script>
+  </body>
+</html>
