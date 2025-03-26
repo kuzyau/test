@@ -23,7 +23,7 @@ function likedCityToArray() {
   if (cityCheck === false) {
     likedCity.push(cityName);
   } else {
-    removeLikedCityFromArray();
+    removeLikedCityFromArray2();
   }
 }
 
@@ -39,7 +39,6 @@ function removeFromArray() {
   const indexOfCity = likedCity.findIndex(
     (city) => city === event.target.previousElementSibling.textContent
   );
-  console.log(indexOfCity);
   likedCity.splice(indexOfCity, 1);
 }
 
@@ -52,15 +51,12 @@ function removeLikedCityFromArray(event) {
   }
 }
 
-function removeLikedCityFromArray2(event) {
-  if (
-    (event.target.className === "like-button") &
-    (event.target.previousElementSibling.textContent === true)
-  ) {
+function removeLikedCityFromArray2() {
+  if (event.target.className === "like-button") {
     const indexOfCity = likedCity.findIndex(
       (city) => city === event.target.previousElementSibling.textContent
     );
-    console.log(indexOfCity);
+
     likedCity.splice(indexOfCity, 1);
 
     return;
@@ -130,8 +126,25 @@ function switchLikeButton() {
 }
 
 window.addEventListener("click", removeLikedCityFromArray);
+
 window.addEventListener("click", function (event) {
-  console.log(event.target.className);
+  if (event.target.className === "new-liked-city") {
+    const likedCityName = event.target.textContent;
+    const url = `${serverUrl}?q=${likedCityName}&appid=${apiKey}`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        const temp = data.main.temp;
+        const icon = data.weather[0].icon;
+
+        tempCityLabel.textContent = `${temp}°`;
+        weatherImage.src = `https://openweathermap.org/img/wn/${icon}@4x.png`;
+        cityNameLabel.textContent = likedCityName;
+
+        switchLikeButton();
+      });
+  }
 });
 
 likeButton.addEventListener("click", function (event) {

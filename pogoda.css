@@ -135,6 +135,10 @@ html {
   margin: 7px 10px;
 }
 
+.new-liked-city {
+  cursor: pointer;
+}
+
 .delete-button {
   position: absolute;
   width: 20px;
